@@ -1,6 +1,6 @@
 name: aliyundrive-checkin
 on:
-  # schedule: [{cron: "25 1 * * *"}]
+  schedule: [{cron: "25 1 * * *"}]
   workflow_dispatch:
   #API trigger for Cloudflare worker
   repository_dispatch:
