@@ -30,15 +30,16 @@ def main():
     token_string = token_string.split(',')
     ali = Aliyundrive()
     message_all = []
+    signin_results = []
 
     for idx, token in enumerate(token_string):
         result = ali.aliyundrive_check_in(token)
         message_all.append(str(result))
-
+        signin_results.append(result.success)
         if idx < len(token_string) - 1:
             message_all.append('--')
 
-    title = '阿里云盘签到结果'
+    title = '签到成功' if signin_results.all() else '签到失败'
     message_all = '\n'.join(message_all)
     message_all = re.sub('\n+', '\n', message_all).rstrip('\n')
 
@@ -46,7 +47,6 @@ def main():
     message_send.send_all(message_tokens, title, message_all)
 
     print('finish')
-
 
 if __name__ == '__main__':
     main()
