@@ -39,7 +39,7 @@ def main():
         if idx < len(token_string) - 1:
             message_all.append('--')
 
-    title = '签到成功' if signin_results.all() else '签到失败'
+    title = '签到成功' if all(signin_results) else '签到失败'
     message_all = '\n'.join(message_all)
     message_all = re.sub('\n+', '\n', message_all).rstrip('\n')
 
